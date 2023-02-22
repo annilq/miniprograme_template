@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "cimage": "/components/parts/cimage"
+  },
+  "navigationBarTitleText": "病情描述"
+}

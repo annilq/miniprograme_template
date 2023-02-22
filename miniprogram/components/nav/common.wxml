@@ -1,0 +1,8 @@
+<view class="custom_nav" style="height:{{navbarHeight}}px;">
+  <view class="custom_nav_bar" style="top:{{statusBarHeight}}px; height:{{cusnavH}}px;">
+    <slot></slot>
+    <view class="nav_title" style="height:{{cusnavH}}px; line-height:{{cusnavH}}px;">
+      {{vTitle}}
+    </view>
+  </view>
+</view>

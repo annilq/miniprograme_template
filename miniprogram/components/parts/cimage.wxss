@@ -1,0 +1,4 @@
+/* pages/components/parts/cimage.wxss */
+.loading{
+  display: none;
+}

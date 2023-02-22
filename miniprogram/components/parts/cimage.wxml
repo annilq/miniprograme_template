@@ -1,0 +1,3 @@
+<image wx:if="{{loading}}" mode="aspectFit" src="./images/default.png"></image>
+<image wx:elif="{{status===1}}" mode="aspectFit" src="./images/noimage.png"></image>
+<image class="{{loading ? 'loading' : ''}}" mode="aspectFit" src="{{src}}" bindtap="preview" bindload="loadedImage" binderror="errorImage"></image>

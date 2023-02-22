@@ -1,0 +1,7 @@
+<!--pages/common/template/empty.wxml-->
+<template name='empty'>
+  <view class='empty'>
+    <image style="width: 160px;height:120px;" src='/asserts/images/list_no1.png'></image>
+    <text class='empty-text'>{{content||'暂无数据'}}</text>
+  </view>
+</template>

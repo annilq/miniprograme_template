@@ -1,0 +1,56 @@
+<wxs src='/utils/utils.wxs' module='utils' />
+<import src='/template/empty.wxml' />
+<view>
+  <t-dropdown-menu>
+    <t-dropdown-item options="{{patients.options}}" value="{{patients.value}}" bindchange="onPatientChange" />
+    <t-dropdown-item options="{{sorter.options}}" value="{{sorter.value}}" bindchange="onStatusChange" />
+  </t-dropdown-menu>
+  <view>
+    <view wx:for="{{dataList}}" wx:key="orderNum">
+      <view class="flex list-item border-bottom">
+        <view class="flex-1"><text wx:if="{{item.gmtPay}}"> {{item.gmtPay}}</text></view>
+        <view class="text-primary text-right font-12">{{utils.getStateText(item.treatmentStatus)}}</view>
+      </view>
+      <view class="flex list-item items-center" bindtap="goPersonDetail" data-item="{{item}}">
+        <view>
+          <image class='process_icon' src="/asserts/images/patient.png" style="width: 100rpx;height: 100rpx;"></image>
+        </view>
+        <view class="flex-1 ml-10">
+          <view class="flex">
+            <view class="{{item.sence===2?'fuz':'wenz'}}">
+              {{item.sence===2?'复诊':'问诊'}}
+            </view>
+            <view>
+              {{item.patientName}}({{item.patientGender ? '男' : '女'}}/{{item.patientAge}}岁)
+            </view>
+          </view>
+          <view class="text-gray font-12 align-center">
+            视频接诊：
+            <text class="{{item.treatmentNum>0?'text-primary':''}}">{{item.treatmentNum}}次</text>
+            留言：
+            <text class="{{item.registrationNewsNum>0?'text-primary':''}}">{{item.registrationNewsNum}}次</text>
+          </view>
+        </view>
+        <image style="width: 10rpx;height: 16rpx;" src="/asserts/images/ic_arrow.png"></image>
+      </view>
+      <view class="flex list-item justify-end text-gray font-14 gap-8" bindtap="goDetail" data-ordernum="{{item.orderNum}}">
+        <view class="btn-radius" wx:if="{{item.treatmentStatus === 3}}" data-ordernum="{{item.orderNum}}" bindtap="sendPaymentMessage">
+          缴费提醒
+        </view>
+        <view class="btn-radius" bindtap="sendMsg" data-ordernum="{{item.orderNum}}" wx:if="{{ item.treatmentStatus === 3 || item.treatmentStatus === 1}}">
+          接诊提醒
+        </view>
+        <view class="btn-radius" bindtap="goDesp" data-ordernum="{{item.orderNum}}" wx:if="{{!!item.treatmentDescBrief}}">
+          病情信息
+        </view>
+      </view>
+    </view>
+    <view class="list-item text-center mt-10" wx:if="{{totalPage === pageNum}}">
+      没有更多数据了
+    </view>
+  </view>
+  <view class="footer-btn btn-primary" wx:if="{{dataList.length>0}}" bindtap="sendNotice">
+    未就诊患者发送通知
+  </view>
+  <template is='empty' wx:if='{{loading===false&&dataList != null && dataList.length == 0}}' />
+</view>

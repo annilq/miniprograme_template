@@ -1,0 +1,100 @@
+/* pages/person/login/login.wxss */
+page {
+  background-color: #fff;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.home-container {
+  /* margin: 0 40rpx; */
+  position: relative;
+  z-index: 2;
+}
+
+.top-title {
+  color: #fff;
+  font-size: 54rpx;
+}
+
+.loginBox {
+  padding: 0 50rpx;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.section-item {
+  display: flex;
+  align-items: center;
+  height: 110rpx;
+  justify-content: left;
+  position: relative;
+  padding: 0;
+  margin-top: 30rpx;
+}
+
+.section-item-key {
+  width: 37rpx;
+  height: 37rpx;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.section-item-value {
+  width: 100%;
+  font-size: 30rpx;
+  color: #5a5a5a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.section-item-value input {
+  height: 100%;
+  width: 100%;
+}
+
+.submit {
+  margin-top: 70rpx;
+  width: 100%;
+}
+
+.section-item-key {
+  width: 37rpx !important;
+}
+
+.top-box {
+  height: 490rpx;
+  color: #ffffff90;
+  padding: 0 55rpx;
+  position: relative;
+  font-size: 27rpx;
+}
+
+.section-item-title {
+  font-size: 27rpx;
+  color: #666666;
+  margin-top: 60rpx;
+}
+
+.img1 {
+  width: 118rpx;
+  height: 117rpx;
+  display: block;
+  padding: 240rpx 0 25rpx;
+  margin: 0 auto;
+}
+
+.img2 {
+  width: 434rpx;
+  height: 55rpx;
+  display: block;
+  margin: 0 auto;
+}

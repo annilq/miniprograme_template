@@ -1,0 +1,79 @@
+<view class="page-container">
+  <view class="card-container">
+    <view class='divider-horizontal' />
+    <view class="flex list-item mt-10 items-center">
+      <view>
+        <image class='process_icon' src="/asserts/images/patient.png" style="width: 100rpx;height: 100rpx;"></image>
+      </view>
+      <view class="flex-1 ml-10">
+        <view class="flex">
+          <view class="{{orderInfo.sence===2?'fuz':'wenz'}}">
+            {{orderInfo.sence===2?'复诊':'问诊'}}
+          </view>
+          <view>
+            {{orderInfo.patientName}}({{orderInfo.patientGender ? '男' : '女'}}/{{orderInfo.patientAge}}岁)
+          </view>
+        </view>
+        <view class=" text-gray font-12 align-center">
+          视频接诊：
+          <text>{{orderInfo.treatmentNum}}次</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 内容滚动框 -->
+  <scroll-view id='message_list' class="message_scroll" enable-flex="true" scroll-y='true' scroll-into-view="{{'id_'+messageSort}}" bindscrolltoupper="getHistoryMsg" scroll-with-animation='true' scroll-anchoring='true'>
+    <!-- 历史消息 -->
+    <view id='{{"id_"+item.id}}' class="message-item-{{item.senderType}}" wx:for="{{historyMessages}}" wx:key="$index">
+      <view class='message-item-text-box-{{item.senderType}} {{item.contentType == "2"?"active":""}}' wx:if="{{item.contentType == '2'}}">
+        <image bindtap="preview" class="message-item-text-box-image" src="{{item.content}}" data-src="{{item.content}}" mode="widthFix"></image>
+      </view>
+      <view class='message-item-text-box-{{item.senderType}}' wx:else>
+        <text class='message-item-text-{{item.senderType}}'>{{item.content}}</text>
+      </view>
+    </view>
+    <!-- 病情描述 -->
+    <view class="describe" wx:if="{{treatmentDescriptionVos}}">
+      <navigator url="/pages/personDetail/description?orderNum={{orderInfo.orderNum}}&patientId={{orderInfo.patientId}}&mode={{!orderInfo.effective ? 1 :0}}" class="describe-title">
+        <view class="describe-t">
+          <image class="interrog-form-img" src="/asserts/images/142-01.png"></image>病情描述
+        </view>
+        <view class="describe-t-link">详情
+          <image class="interrog-form-img" src="/asserts/images/ic_arrow.png"></image>
+        </view>
+      </navigator>
+      <view class='divider-horizontal' />
+      <view class="describe-c">
+        <view class="describe-con">{{description}}</view>
+        <view class="describe-info">
+          <text class="red2">病例资料：</text>
+          <text>{{imgLength}}张</text>
+          <text class="red">（仅医生和病人可见）</text>
+        </view>
+      </view>
+    </view>
+    <!-- 对话 -->
+    <view id='{{"id_"+item.id}}' class="message-item-{{item.senderType}}" wx:for="{{messageList}}" wx:key="$index">
+      <!-- 发送消息中 -->
+      <view class="message-loading" wx:if="{{item.senderType==2}}">
+        <image class="an" wx:if="{{messageLoading && messageList[messageList.length-1].id == item.id}}" src="/asserts/images/148.png"></image>
+        <image wx:if="{{item.fail}}" bindtap="repeat" data-detail="{{item}}" src="/asserts/images/147.png"></image>
+      </view>
+      <view class='message-item-text-box-{{item.senderType}} {{item.contentType == "2"?"active":""}}' wx:if="{{item.contentType == '2'}}">
+        <image bindtap="preview" class="message-item-text-box-image" src="{{item.content}}" data-src="{{item.content}}" mode="widthFix"></image>
+      </view>
+      <view class='message-item-text-box-{{item.senderType}}' wx:else>
+        <text class='message-item-text-{{item.senderType}}'>{{item.content}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 底部输入框 -->
+  <!-- 输入框 -->
+  <view class="interrog-form">
+    <input class="interrog-form-input" bindinput='messageInput' value='{{message}}'></input>
+    <view class="interrog-form-upload">
+      <image class="interrog-form-img" src="/asserts/images/145-01.png" wx:if="{{!message}}" bindtap="onChooseImage"></image>
+      <view bindtap="send" class="message-mode-input" wx:else>发送</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,50 @@
+<!--pages/person/notice/notice.wxml-->
+<view class="pd-10">
+  <view class="flex list-item mt-10 items-center">
+    <view>
+      <image src="/asserts/images/patient.png" style="width: 100rpx;height: 100rpx;"></image>
+    </view>
+    <view class="flex-1 ml-10">
+      <view class="flex">
+        <view class="{{orderInfo.sence===2?'fuz':'wenz'}}">
+          {{orderInfo.sence===2?'复诊':'问诊'}}
+        </view>
+        {{orderInfo.patientName}} {{orderInfo.patientGender?"男":"女"}}
+      </view>
+      <view class="text-gray font-12">
+        视频接诊:<Text class="text-primary">{{orderInfo.treatmentNum}}次</Text>留言:<Text class="text-primary">{{orderInfo.newsNum}}条</Text>
+      </view>
+    </view>
+    <view class="flex font-12 items-center gap-8 text-gray" bindtap="showDialog">
+      更多信息
+      <image src="/asserts/images/ic_arrow.png" style="width: 9rpx;height: 15rpx;"></image>
+    </view>
+  </view>
+    <view bindtap="goDesp"class="flex list-item mt-10 items-center">
+      病情信息
+    </view>
+    <view bindtap="goDetail" class="flex list-item mt-10 items-center">
+      患者留言
+    </view>
+</view>
+<view class="footer-btn flex gap-8" wx:if="{{type==='quene'}}">
+  <view class="btn flex-1" bindtap="refuseDialog">
+    拒绝接诊
+  </view>
+  <view class="btn btn-primary flex-1" bindtap="startVideo" wx:if="dataList.length>0">
+    视频通话
+  </view>
+  <!-- <view class="btn btn-primary flex-1" bindtap="startAudio" wx:if="dataList.length>0">
+    语音通话
+  </view> -->
+</view>
+<mp-dialog title="患者资料" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+  <view class="text-left">
+    <view>挂号时间：{{orderInfo.gmtCreate}}</view>
+    <view>卡号：{{orderInfo.patientId}}</view>
+    <view>姓名：{{orderInfo.patientName}}</view>
+    <view>性别：{{orderInfo.patientGender?"男":"女"}}</view>
+    <view>年龄：{{orderInfo.patientAge}}</view>
+    <view>电话：{{orderInfo.patientPhone}}</view>
+  </view>
+</mp-dialog>

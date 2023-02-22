@@ -1,0 +1,50 @@
+<!--pages/personal/pages/my_orders/description_of_illness.wxml-->
+<import src='/template/empty.wxml' />
+<import src='/template/section_header.wxml' />
+
+<!-- 病情描述 -->
+<view wx:if="{{tab == 1}}" style="height:100%">
+	<view class="" wx:for="{{descrs}}" wx:key="*this">
+		<template is="section_header" data="{{title:'目前病情'}}" />
+		<view class="content">
+			<text>{{item.description}}</text>
+			<view class="top-info">
+				<text class="time">{{item.gmtCreate}}</text>
+			</view>
+		</view>
+		<view class='section-header'>
+			<view class='section-header-flag' />
+			<text class='section-header-text'>患者性别</text>
+			<view class="weight">{{item.patientGender?"男":"女"}}</view>
+		</view>
+    <view class='section-header' wx:if="{{item.phone}}">
+			<view class='section-header-flag' />
+			<text class='section-header-text'>患者联系方式</text>
+			<view class="weight">{{item.phone}}</view>
+		</view>
+		<view class='section-header'>
+			<view class='section-header-flag' />
+			<text class='section-header-text'>身高体重</text>
+			<view class="weight">{{item.height}}cm/{{item.weight}}Kg</view>
+		</view>
+
+		<template wx:if="{{item.imgs && item.imgs.length >0}}" is="section_header" data="{{title:'病例资料'}}" />
+		<view wx:if="{{!!item.imgs}}" class="images">
+			<cimage wx:for="{{item.imgs}}" wx:key="*this" wx:for-item="src" src="{{src}}" list="{{item.imgs}}" />
+		</view>
+
+		<template wx:if="{{!!item.tongue && item.tongue.length >0}}" is="section_header" data="{{title:'舌面照'}}" />
+		<view wx:if="{{!!item.tongue}}" class="images">
+			<cimage wx:for="{{item.tongue}}" wx:key="*this" wx:for-item="src" src="{{src}}" list="{{item.tongue}}" />
+		</view>
+
+		<template wx:if="{{!!item.face && item.face.length >0}}" is="section_header" data="{{title:'面照'}}" />
+		<view wx:if="{{!!item.face}}" class="images">
+			<cimage wx:for="{{item.face}}" wx:key="*this" wx:for-item="src" src="{{src}}" list="{{item.face}}" />
+		</view>
+
+	</view>
+	<template is='empty' data="{{content:'暂无病情描述'}}" wx:if='{{descrs != null && descrs.length == 0}}' />
+	<!-- <button class="btn" wx:if="{{type!=1}}" bindtap="showEditPage">
+  <i-icon type="add" /> 增加描述</button> -->
+</view>

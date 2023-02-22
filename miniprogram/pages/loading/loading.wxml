@@ -1,0 +1,7 @@
+<!--pages/person/person.wxml-->
+<view class="loading">
+  <image class="logo" mode="widthFix" src="/asserts/images/splash1.png"></image>
+  <view>在线诊疗</view>
+  <text class="text">一对一视频接诊，架起患者和医院医生的"桥梁"</text>
+  <view class="bottom">南昌云启信息技术有限公司 ©技术支持</view>
+</view>

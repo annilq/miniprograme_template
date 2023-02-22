@@ -1,0 +1,27 @@
+<!--pages/person/login/login.wxml-->
+
+<view class="home-container">
+  <view class="top-box">
+    <image class="bg" src="/images/icon-01.png" />
+    <image class="img1" src="/images/logo.png" />
+    <image class="img2" src="/images/icon-13.png" />
+  </view>
+
+  <view class="loginBox">
+    <view class='section-item'>
+      <image src="/images/icon-09.png" class='section-item-key' />
+      <view class='section-item-value'>
+        <input class='section-input' placeholder='请输入账号' data-name="account" value="{{account}}" bindinput='inputChange'></input>
+      </view>
+    </view>
+    <view class='divider-horizontal' />
+    <view class='section-item'>
+      <image src="/images/icon-10.png" class='section-item-key' />
+      <view class='section-item-value'>
+        <input type="password" class='section-input' placeholder='请输入密码' data-name="password" value="{{password}}" bindinput='inputChange' maxlength="16"></input>
+      </view>
+    </view>
+    <view class='divider-horizontal' />
+    <button disabled="{{clickTime}}" class="submit" bindtap="submit">登录</button>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+<wxs src='/utils/utils.wxs' module='utils' />
+<import src='/template/empty.wxml' />
+<view class="pd-10" wx:if="{{dataList.length>0}}">
+  <view bindtap="goDetail" class="flex list-item mt-10 items-center" data-ordernum="{{item.orderNum}}" wx:for="{{dataList}}" wx:key="*this">
+    <view class="relative">
+      <image class='process_icon' src="/asserts/images/patient.png" style="width: 100rpx;height: 100rpx;"></image>
+      <view className="m-has-new absolute" wx:if="{{item.doctorUnreadNews}}"></view>
+    </view>
+    <view class="flex-1 ml-10">
+      <view class="flex">
+        <view class="{{item.sence===2?'fuz':'wenz'}}">
+          {{item.sence===2?'复诊':'问诊'}}
+        </view>
+        <view>
+          {{item.senderName}}
+        </view>
+        <view class="flex-1 text-right text-gray font-12 align-center">
+          {{item.gmtLatestMessage}}
+        </view>
+      </view>
+      <view>
+        <view class="text-gray font-12">
+          {{item.recentNewsContentType == 1
+          ? item.recentNewsContent
+          : utils.getType(item.recentNewsContentType)}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<template is='empty' wx:if='{{dataList != null && dataList.length == 0}}' />

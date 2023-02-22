@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "NavComponent": "/components/nav/common",
+    "mp-icon": "/components/weui-miniprogram/icon/icon"
+  },
+  "navigationStyle":"custom"
+}

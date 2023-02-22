@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/loading/loading",
+    "pages/doctor/doctor",
+    "pages/setting/index",
+    "pages/queue/queue",
+    "pages/personDetail/person",
+    "pages/videocall/room/room",
+    "pages/message/message",
+    "pages/message/detail/detail",
+    "pages/personDetail/description",
+    "pages/patients/patients",
+    "pages/patients/registered",
+    "pages/setting/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "在线诊疗",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": false,
+    "color": "#7A7E83",
+    "selectedColor": "#916e56",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/doctor/doctor",
+        "iconPath": "/asserts/images/frag_bg_unhome.png",
+        "selectedIconPath": "/asserts/images/frag_bg_home.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/setting/user",
+        "iconPath": "/asserts/images/frag_bg_uncenter.png",
+        "selectedIconPath": "/asserts/images/frag_bg_center.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "resolveAlias": {
+    "~/*": "/*",
+    "@utils/*": "utils/*",
+    "@api/*": "api/*"
+  }
+}

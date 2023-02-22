@@ -1,0 +1,8 @@
+function getPopupStyles(zIndex, style) {
+  var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+  return zIndexStyle + style;
+}
+
+module.exports = {
+  getPopupStyles: getPopupStyles,
+};

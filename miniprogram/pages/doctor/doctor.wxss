@@ -1,0 +1,11 @@
+/* pages/doctor/doctor.wxss */
+.bg-menu{
+  background-color:  var(--primary-color);
+  padding: 20px;
+}
+.top-menu{
+  justify-content:space-between;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+}

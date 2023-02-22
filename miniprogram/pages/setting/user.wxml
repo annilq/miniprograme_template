@@ -1,0 +1,35 @@
+<view>
+  <view class="flex list-item items-center">
+    <view>
+      <image class='process_icon' src="/asserts/images/center_user_default.png" style="width: 100rpx;height: 100rpx;"></image>
+    </view>
+    <view class="flex-1 ml-10">
+      <view class="flex items-center">
+        <view>
+          {{userInfo.name||""}}
+        </view>
+        <view class="text-primary font-12 ml-10 border-radius-4" style="border: 1px solid currentColor;padding: 0 5px;">{{userInfo.doctorTitleName||"" }}</view>
+      </view>
+      <view class="text-gray font-12 align-center">
+        科室：{{userInfo.deptName||""}}-{{userInfo.code||""}}
+      </view>
+    </view>
+  </view>
+  <view class="flex list-item mt-10" bindtap="switchStatus">
+    <view class="flex-1">
+      切换状态
+    </view>
+    <view>
+      {{connecting?"接诊中":"暂停接诊"}}
+      <image src="/asserts/images/ic_arrow.png" style="width: 9rpx;height: 15rpx;"></image>
+    </view>
+  </view>
+  <view class="flex list-item mt-10">
+    <view class="flex-1">
+      版本号
+    </view>
+    <view>
+      {{version}}
+    </view>
+  </view>
+</view>
