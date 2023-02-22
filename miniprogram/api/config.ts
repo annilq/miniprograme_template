@@ -10,9 +10,9 @@ export function version() {
     case 'develop':
       return configUrl; // 本地环境
     case 'trial':
-      return 'https://zxzl.jxszyy.com/szyy_online_prod' // 体验环境
+      return 'https://zxzl.jxszyy.com' // 体验环境
     case 'release':
-      return 'https://zxzl.jxszyy.com/szyy_online_prod'; // 线上环境
+      return 'https://zxzl.jxszyy.com'; // 线上环境
     default:
       return 'https://ybzd.ncyunqi.com/szyy_online_test'; // 其他环境
   }

@@ -61,10 +61,10 @@ Page({
           app.globalData.token = data?.resp.token;
           this.loadData();
         }
-      }).catch(e=>{
+      }).catch(errMsg=>{
         wx.showModal({
           title: "提示",
-          content: e.info,
+          content: errMsg,
           showCancel: false,
         });
       });

@@ -60,7 +60,7 @@ export function request<T>(
           } else {
             // 其他
             requestFail(res.data.info ? res.data.info : "操作异常");
-            reject(res.data);
+            reject(res.data?.info || "操作异常");
           }
         } else if (
           res.statusCode == 502 ||
@@ -87,13 +87,13 @@ export function request<T>(
           }
         } else {
           requestFail(res.data ? JSON.stringify(res.data) : "操作异常");
-          reject(res);
+          reject(res.data?.info || "操作异常");
         }
       },
       fail: function (res) {
         console.error("response_fail:" + JSON.stringify(res));
         requestFail(res.data ? JSON.stringify(res.data) : "操作异常");
-        reject(res);
+        reject(res.data?.info || "操作异常");
       },
       complete: function (res) {
         if (showLoading) {
